@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../public/output.css">
+    </head>
+    <body class="flex h-screen w-full flex-col justify-between">
+        <div class="p-3">
+            <nav class="flex flex-row justify-between md:justify-start md:gap-4">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12.75 3.03v.568c0 .334.148.65.405.864l1.068.89c.442.369.535 1.01.216 1.49l-.51.766a2.25 2.25 0 0 1-1.161.886l-.143.048a1.107 1.107 0 0 0-.57 1.664c.369.555.169 1.307-.427 1.605L9 13.125l.423 1.059a.956.956 0 0 1-1.652.928l-.679-.906a1.125 1.125 0 0 0-1.906.172L4.5 15.75l-.612.153M12.75 3.031a9 9 0 0 0-8.862 12.872M12.75 3.031a9 9 0 0 1 6.69 14.036m0 0-.177-.529A2.25 2.25 0 0 0 17.128 15H16.5l-.324-.324a1.453 1.453 0 0 0-2.328.377l-.036.073a1.586 1.586 0 0 1-.982.816l-.99.282c-.55.157-.894.702-.8 1.267l.073.438c.08.474.49.821.97.821.846 0 1.598.542 1.865 1.345l.215.643m5.276-3.67a9.012 9.012 0 0 1-5.276 3.67m0 0a9 9 0 0 1-10.275-4.835M15.75 9c0 .896-.393 1.7-1.016 2.25" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 md:hidden">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+              <div class="hidden md:flex md:flex-row md:gap-4 md:font-mono md:text-sm">
+                <a href="">News</a>
+                <a href="">About</a>
+                <a href="">RSS</a>
+                <a href="">Contact</a>
+              </div>
+            </nav>
+            <main>
+              <h1 class="mt-4 text-center font-mono text-4xl md:text-5xl md:mt-6">Uncrowded News</h1>
+              <p class="text-center font-sans text-sm font-thin italic">"All the news that we could scrape"</p>
+              <h2 class="mt-5 font-semibold md:text-lg">Archive</h2>
+              <div class="mt-3 grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
+                <% items.forEach(function(item) { %>
+                    <div class="flex flex-col border p-3">
+                        <div>
+                            <a href="<%= item.url %>" target="_blank">
+                                <img class="aspect-video object-cover" src="<%= item.thumbnail.image_url %>" alt="" />
+                            </a>
+                        </div>
+                        <div class="flex flex-col justify-evenly gap-2">
+                            <div>
+                            <span class="text-xs"><%= item.date_published %></span>
+                            </div>
+                            <a class="line-clamp-2 cursor-pointer text-sm font-semibold" href="<%= item.url %>" target="_blank"><%= item.title %></a>
+                            <p class="line-clamp-2 text-xs"><%= item.description %></p>
+                        </div>
+                    </div>
+                <% }); %>
+              </div>
+            </main>
+        </div>
+        <footer class="w-full border-t p-3">
+            <h2 class="text-left text-sm">© 2024 - Made with coffee and keyboard</h2>
+        </footer>
+    </body>
+</html>
